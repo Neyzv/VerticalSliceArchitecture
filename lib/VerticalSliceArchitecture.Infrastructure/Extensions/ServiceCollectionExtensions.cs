@@ -10,9 +10,9 @@ public static class ServiceCollectionExtensions
 {
     extension (IServiceCollection services)
     {
-        public IServiceCollection AddInfrastructure(Action<IServiceProvider, DbContextOptionsBuilder>? configure = null) =>
+        public IServiceCollection AddInfrastructure(Action<IServiceProvider, DbContextOptionsBuilder>? inMemoryConfigure = null) =>
             services
-                .AddDbContextFactory<InMemoryDbContext>((sp, o) => configure?.Invoke(sp, o))
+                .AddDbContextFactory<InMemoryDbContext>((sp, o) => inMemoryConfigure?.Invoke(sp, o))
                 .AddTransient<ISeeder, MovieSeeder>();
     }
 }
