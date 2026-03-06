@@ -3,7 +3,7 @@ using VerticalSliceArchitecture.Infrastructure.Persistence.Seeding;
 
 namespace VerticalSliceArchitecture.Infrastructure.Persistence.InMemory;
 
-public sealed class InMemoryDbContext(DbContextOptions<InMemoryDbContext> options, IEnumerable<ISeeder> seeders)
+public sealed class InMemoryDbContext(DbContextOptions<InMemoryDbContext> options, IEnumerable<ISeeder<InMemoryDbContext>> seeders)
     : DbContext(options)
 {
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -20,20 +20,26 @@ public sealed class InMemoryDbContext(DbContextOptions<InMemoryDbContext> option
 
     private void Seed(DbContext context, bool migrationApplied)
     {
-        foreach (var seeder in seeders.Where(x => x.ShouldBeApplied(context)))
-            seeder.Seed(context);
+        if (context is not InMemoryDbContext inMemoryDbContext)
+            return;
+        
+        foreach (var seeder in seeders.Where(x => x.ShouldBeApplied(inMemoryDbContext)))
+            seeder.Seed(inMemoryDbContext);
     }
 
     private async Task SeedAsync(DbContext context, bool migrationApplied, CancellationToken token)
     {
+        if (context is not InMemoryDbContext inMemoryDbContext)
+            return;
+        
         var tasks = new List<Task>();
 
         foreach (var seeder in seeders)
         {
-            if (!await seeder.ShouldBeAppliedAsync(context, token).ConfigureAwait(false))
+            if (!await seeder.ShouldBeAppliedAsync(inMemoryDbContext, token).ConfigureAwait(false))
                 continue;
 
-            tasks.Add(seeder.SeedAsync(context, token));
+            tasks.Add(seeder.SeedAsync(inMemoryDbContext, token));
         }
 
         await Task.WhenAll(tasks).ConfigureAwait(false);

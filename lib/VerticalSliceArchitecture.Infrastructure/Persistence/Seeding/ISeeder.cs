@@ -2,20 +2,21 @@
 
 namespace VerticalSliceArchitecture.Infrastructure.Persistence.Seeding;
 
-public interface ISeeder
+public interface ISeeder<TDbContext>
+    where TDbContext : DbContext
 {
     /// <summary>
     /// Determinate if the seeder should be applied.
     /// </summary>
     /// <param name="context">The <see cref="DbContext"/> of the seeded database.</param>
     /// <returns><c>true</c> if it should be applied, otherwise <c>false</c>.</returns>
-    bool ShouldBeApplied(DbContext context);
+    bool ShouldBeApplied(TDbContext context);
     
     /// <summary>
     /// Add static data to the database.
     /// </summary>
     /// <param name="context">The <see cref="DbContext"/> of the seeded database.</param>
-    void Seed(DbContext context);
+    void Seed(TDbContext context);
     
     /// <summary>
     /// Determinate if the seeder should be applied asynchronously.
@@ -23,7 +24,7 @@ public interface ISeeder
     /// <param name="context">The <see cref="DbContext"/> of the seeded database.</param>
     /// <param name="token">The cancellation token</param>
     /// <returns><c>true</c> if it should be applied, otherwise <c>false</c>.</returns>
-    Task<bool> ShouldBeAppliedAsync(DbContext context, CancellationToken token);
+    Task<bool> ShouldBeAppliedAsync(TDbContext context, CancellationToken token);
     
     /// <summary>
     /// Add static data to the database asynchronously.
@@ -31,5 +32,5 @@ public interface ISeeder
     /// <param name="context">The <see cref="DbContext"/> of the seeded database.</param>
     /// <param name="token">The cancellation token</param>
     /// <returns></returns>
-    Task SeedAsync(DbContext context, CancellationToken token);
+    Task SeedAsync(TDbContext context, CancellationToken token);
 }

@@ -6,7 +6,7 @@ using VerticalSliceArchitecture.Infrastructure.Persistence.Seeding;
 namespace VerticalSliceArchitecture.Infrastructure.Persistence.InMemory.Seeding;
 
 public sealed class MovieSeeder
-    : ISeeder
+    : ISeeder<InMemoryDbContext>
 {
     private const byte MinMovieCount = 6;
     private const byte MaxMovieCount = 15;
@@ -22,10 +22,10 @@ public sealed class MovieSeeder
         return faker.GenerateLazy(amount);
     }
     
-    public bool ShouldBeApplied(DbContext context) =>
+    public bool ShouldBeApplied(InMemoryDbContext context) =>
         context.Set<MovieEntity>().Any();
 
-    public void Seed(DbContext context)
+    public void Seed(InMemoryDbContext context)
     {
         context
             .Set<MovieEntity>()
@@ -34,10 +34,10 @@ public sealed class MovieSeeder
         context.SaveChanges();
     }
 
-    public Task<bool> ShouldBeAppliedAsync(DbContext context, CancellationToken token) =>
+    public Task<bool> ShouldBeAppliedAsync(InMemoryDbContext context, CancellationToken token) =>
         context.Set<MovieEntity>().AnyAsync(token);
 
-    public async Task SeedAsync(DbContext context, CancellationToken token)
+    public async Task SeedAsync(InMemoryDbContext context, CancellationToken token)
     {
         await context
             .Set<MovieEntity>()
