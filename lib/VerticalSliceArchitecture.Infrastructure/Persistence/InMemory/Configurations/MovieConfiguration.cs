@@ -17,7 +17,9 @@ public sealed class MovieConfiguration
             .Property(static m => m.Title)
             .HasMaxLength(60)
             .IsRequired();
-        builder.HasIndex(static m => m.Title);
+        builder
+            .HasIndex(static m => m.Title)
+            .IsUnique();
         
         builder
             .Property(static m => m.Description)
