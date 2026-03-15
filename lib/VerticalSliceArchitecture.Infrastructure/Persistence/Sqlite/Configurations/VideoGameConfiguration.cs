@@ -29,7 +29,7 @@ public sealed class VideoGameConfiguration
             .IsRequired();
         builder
             .HasIndex(static v => v.Genre)
-            .IsUnique();
+            .IsUnique(false);
         
         builder
             .Property(static v => v.Description)
