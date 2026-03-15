@@ -11,7 +11,7 @@ public sealed class MovieConfiguration
     {
         builder.ToTable("Movies");
         
-        builder.HasKey(m => m.Id);
+        builder.HasKey(static m => m.Id);
         
         builder
             .Property(static m => m.Title)

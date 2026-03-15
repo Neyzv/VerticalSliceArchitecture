@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.ComTypes;
 using DorApiExplorer.Extensions;
 using Microsoft.EntityFrameworkCore;
 using VerticalSliceArchitecture.Infrastructure.Extensions;
@@ -9,10 +10,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services
     .AddOpenApi()
-    .AddInfrastructure(static (_, o) => o.UseInMemoryDatabase("movies"))
+    .AddInMemoryDatabase(static (_, o) => o.UseInMemoryDatabase("movies"))
+    .AddSqliteDatabase(static (_, o) => o.UseSqlite("Data Source=app.db"))
     .AddMediaThor()
     .AddDorApiExplorer()
-    .AddInfrastructure();
+    .AddInMemoryDatabase();
 
 var app = builder.Build();
 
