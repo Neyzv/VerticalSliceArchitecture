@@ -1,11 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using VerticalSliceArchitecture.Infrastructure.Persistence.Seeding;
+using VerticalSliceArchitecture.Infrastructure.Persistence.Sqlite.Entities;
 
 namespace VerticalSliceArchitecture.Infrastructure.Persistence.Sqlite;
 
 public sealed class SqliteDbContext(DbContextOptions<SqliteDbContext> options, IEnumerable<ISeeder<SqliteDbContext>> seeders)
     : DbContext
 {
+    public DbSet<VideoGameEntity> VideoGames { get; set; }
+    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(SqliteDbContext).Assembly);

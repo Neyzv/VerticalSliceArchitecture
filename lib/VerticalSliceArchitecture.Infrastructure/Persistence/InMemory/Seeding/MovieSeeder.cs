@@ -27,8 +27,7 @@ public sealed class MovieSeeder
 
     public void Seed(InMemoryDbContext context)
     {
-        context
-            .Set<MovieEntity>()
+        context.Movies
             .AddRange(GetMovies((byte)Random.Shared.Next(MinMovieCount, MaxMovieCount)));
         
         context.SaveChanges();
@@ -39,8 +38,7 @@ public sealed class MovieSeeder
 
     public async Task SeedAsync(InMemoryDbContext context, CancellationToken token)
     {
-        await context
-            .Set<MovieEntity>()
+        await context.Movies
             .AddRangeAsync(GetMovies((byte)Random.Shared.Next(MinMovieCount, MaxMovieCount)), token);
         
         await context.SaveChangesAsync(token);
