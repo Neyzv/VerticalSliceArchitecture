@@ -23,7 +23,7 @@ public sealed class MovieSeeder
     }
     
     public bool ShouldBeApplied(InMemoryDbContext context) =>
-        context.Set<MovieEntity>().Any();
+        !context.Movies.Any();
 
     public void Seed(InMemoryDbContext context)
     {
@@ -33,8 +33,8 @@ public sealed class MovieSeeder
         context.SaveChanges();
     }
 
-    public Task<bool> ShouldBeAppliedAsync(InMemoryDbContext context, CancellationToken token) =>
-        context.Set<MovieEntity>().AnyAsync(token);
+    public async Task<bool> ShouldBeAppliedAsync(InMemoryDbContext context, CancellationToken token) =>
+        !await context.Movies.AnyAsync(token);
 
     public async Task SeedAsync(InMemoryDbContext context, CancellationToken token)
     {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using VerticalSliceArchitecture.Infrastructure.Persistence.InMemory;
+using VerticalSliceArchitecture.Infrastructure.Persistence.InMemory.Repositories;
 using VerticalSliceArchitecture.Infrastructure.Persistence.InMemory.Seeding;
 using VerticalSliceArchitecture.Infrastructure.Persistence.Seeding;
 using VerticalSliceArchitecture.Infrastructure.Persistence.Sqlite;
@@ -15,13 +16,14 @@ public static class ServiceCollectionExtensions
         public IServiceCollection AddInMemoryDatabase(Action<IServiceProvider, DbContextOptionsBuilder>? inMemoryConfigure = null) =>
             services
                 .AddDbContextFactory<InMemoryDbContext>((sp, o) => inMemoryConfigure?.Invoke(sp, o))
-                .AddScoped(sp => sp.GetRequiredService<IDbContextFactory<InMemoryDbContext>>().CreateDbContext())
-                .AddTransient<ISeeder<InMemoryDbContext>, MovieSeeder>();
+                .AddScoped<DbContext>(sp => sp.GetRequiredService<IDbContextFactory<InMemoryDbContext>>().CreateDbContext())
+                .AddTransient<ISeeder<InMemoryDbContext>, MovieSeeder>()
+                .AddSingleton<IMovieRepository, MovieRepository>();
         
         public IServiceCollection AddSqliteDatabase(Action<IServiceProvider, DbContextOptionsBuilder>? sqliteConfigure = null) =>
             services
                 .AddDbContextFactory<SqliteDbContext>((sp, o) => sqliteConfigure?.Invoke(sp, o))
-                .AddScoped(sp => sp.GetRequiredService<IDbContextFactory<SqliteDbContext>>().CreateDbContext())
+                .AddScoped<DbContext>(sp => sp.GetRequiredService<IDbContextFactory<SqliteDbContext>>().CreateDbContext())
                 .AddTransient<ISeeder<SqliteDbContext>, VideoGameSeeder>();
     }
 }

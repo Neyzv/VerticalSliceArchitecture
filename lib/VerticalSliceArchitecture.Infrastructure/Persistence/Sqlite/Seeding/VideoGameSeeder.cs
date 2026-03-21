@@ -27,7 +27,7 @@ public sealed class VideoGameSeeder
     }
     
     public bool ShouldBeApplied(SqliteDbContext context) =>
-        context.Set<VideoGameEntity>().Any();
+        !context.VideoGames.Any();
 
     public void Seed(SqliteDbContext context)
     {
@@ -37,8 +37,8 @@ public sealed class VideoGameSeeder
         context.SaveChanges();
     }
 
-    public Task<bool> ShouldBeAppliedAsync(SqliteDbContext context, CancellationToken token) =>
-        context.Set<VideoGameEntity>().AnyAsync(token);
+    public async Task<bool> ShouldBeAppliedAsync(SqliteDbContext context, CancellationToken token) =>
+        !await context.VideoGames.AnyAsync(token);
 
     public async Task SeedAsync(SqliteDbContext context, CancellationToken token)
     {

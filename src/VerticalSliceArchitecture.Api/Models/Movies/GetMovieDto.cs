@@ -4,7 +4,7 @@ using VerticalSliceArchitecture.Infrastructure.Persistence.InMemory.Entities;
 
 namespace VerticalSliceArchitecture.Api.Models.Movies;
 
-[Facet(typeof(MovieEntity), Include = [nameof(MovieEntity.Title), nameof(MovieEntity.Description)])]
+[Facet(typeof(MovieEntity), Configuration = typeof(GetMovieDtoConfiguration), Include = [nameof(MovieEntity.Title), nameof(MovieEntity.Description)])]
 public sealed partial record GetMovieDto
 {
     public int YearOfRelease { get; set; }
