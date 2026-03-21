@@ -5,7 +5,7 @@ using VerticalSliceArchitecture.Infrastructure.Persistence.Sqlite.Entities;
 namespace VerticalSliceArchitecture.Infrastructure.Persistence.Sqlite;
 
 public sealed class SqliteDbContext(DbContextOptions<SqliteDbContext> options, IEnumerable<ISeeder<SqliteDbContext>> seeders)
-    : DbContext
+    : DbContext(options)
 {
     public DbSet<VideoGameEntity> VideoGames { get; set; }
     

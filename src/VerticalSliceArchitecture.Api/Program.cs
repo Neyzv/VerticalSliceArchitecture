@@ -13,24 +13,24 @@ builder.Services
     .AddInMemoryDatabase(static (_, o) => o.UseInMemoryDatabase("movies"))
     .AddSqliteDatabase(static (_, o) => o.UseSqlite("Data Source=app.db"))
     .AddMediaThor()
-    .AddDorApiExplorer()
-    .AddInMemoryDatabase();
+    .AddDorApiExplorer();
 
 var app = builder.Build();
 
+var migrationTasks = new List<Task>();
+
 using (var scope = app.Services.CreateScope())
 {
-    var dbFactory = scope.ServiceProvider
-        .GetRequiredService<IDbContextFactory<InMemoryDbContext>>();
+    migrationTasks.AddRange(
+        scope.ServiceProvider
+            .GetServices<DbContext>()
+            .Select(db => db.Database.IsRelational() ? db.Database.MigrateAsync() : db.Database.EnsureCreatedAsync())
+    );
+    
+    app.MapEndpoints();
 
-    await using (var db = await dbFactory.CreateDbContextAsync())
-    {
-        var inMemoryMigrationTask = db.Database.IsRelational() ? db.Database.MigrateAsync() : db.Database.EnsureCreatedAsync();
-
-        app.MapEndpoints();
-
-        await inMemoryMigrationTask;
-    }
+    if (migrationTasks.Count > 0)
+        await Task.WhenAll(migrationTasks);
 }
 
 // Configure the HTTP request pipeline.
