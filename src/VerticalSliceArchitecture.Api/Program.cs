@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddOpenApi()
     .AddInMemoryDatabase(static (_, o) => o.UseInMemoryDatabase("movies"))
-    //.AddSqliteDatabase(static (_, o) => o.UseSqlite("Data Source=app.db"))
+    .AddSqliteDatabase(static (_, o) => o.UseSqlite("Data Source=app.db"))
     .AddMediaThor()
     .AddDorApiExplorer();
 
