@@ -19,7 +19,7 @@ public sealed class MovieConfiguration
             .IsRequired();
         builder
             .HasIndex(static m => m.Title)
-            .IsUnique();
+            .IsUnique(false);
         
         builder
             .Property(static m => m.Description)
