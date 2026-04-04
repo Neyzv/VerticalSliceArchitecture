@@ -22,4 +22,12 @@ public sealed class MovieRepository(IDbContextFactory<InMemoryDbContext> dbConte
             yield return movie;
         }
     }
+
+    public async Task<int> CreateMovieAsync(MovieEntity entity, CancellationToken cancellationToken = default)
+    {
+        await using var dbContext = await dbContextFactory.CreateDbContextAsync(cancellationToken);
+        dbContext.Add(entity);
+        
+        return await dbContext.SaveChangesAsync(cancellationToken);
+    }
 }

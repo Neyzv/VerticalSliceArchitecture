@@ -1,7 +1,10 @@
 ﻿using DorApiExplorer;
+using Facet.Extensions;
 using MediaThor;
 using Microsoft.AspNetCore.Mvc;
 using VerticalSliceArchitecture.Api.Models.Movies;
+using VerticalSliceArchitecture.Infrastructure.InMemory.Entities;
+using VerticalSliceArchitecture.Infrastructure.InMemory.Repositories;
 
 namespace VerticalSliceArchitecture.Api.Features.Movies;
 
@@ -10,12 +13,21 @@ public static class CreateMovieFeature
     public sealed record CreateMovieRequest(string Title, string Description, DateTime ReleaseDate)
         : IRequest<GetMovieDto>;
     
-    public sealed class CreateMovieRequestHandler
+    public sealed class CreateMovieRequestHandler(IMovieRepository movieRepository)
         : IRequestHandler<CreateMovieRequest, GetMovieDto>
     {
-        public Task<GetMovieDto> HandleAsync(CreateMovieRequest request, CancellationToken cancellationToken)
+        public async Task<GetMovieDto> HandleAsync(CreateMovieRequest request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var movieEntity = new MovieEntity
+            {
+                Title = request.Title,
+                Description = request.Description,
+                ReleaseDate = DateOnly.FromDateTime(request.ReleaseDate)
+            };
+
+            await movieRepository.CreateMovieAsync(movieEntity, cancellationToken);
+
+            return movieEntity.ToFacet<MovieEntity, GetMovieDto>();
         }
     }
 
