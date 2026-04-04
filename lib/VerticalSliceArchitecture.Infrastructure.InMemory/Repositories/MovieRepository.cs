@@ -1,10 +1,10 @@
 ﻿using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
 using VerticalSliceArchitecture.Infrastructure.Extensions;
-using VerticalSliceArchitecture.Infrastructure.Persistence.InMemory.Entities;
-using VerticalSliceArchitecture.Infrastructure.Persistence.InMemory.Repositories.Specifications.Ordering;
+using VerticalSliceArchitecture.Infrastructure.InMemory.Entities;
+using VerticalSliceArchitecture.Infrastructure.InMemory.Repositories.Specifications.Ordering;
 
-namespace VerticalSliceArchitecture.Infrastructure.Persistence.InMemory.Repositories;
+namespace VerticalSliceArchitecture.Infrastructure.InMemory.Repositories;
 
 public sealed class MovieRepository(IDbContextFactory<InMemoryDbContext> dbContextFactory)
     : IMovieRepository

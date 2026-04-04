@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using VerticalSliceArchitecture.Infrastructure.Persistence.InMemory.Entities;
+using VerticalSliceArchitecture.Infrastructure.InMemory.Entities;
 
-namespace VerticalSliceArchitecture.Infrastructure.Persistence.InMemory.Configurations;
+namespace VerticalSliceArchitecture.Infrastructure.InMemory.Configurations;
 
 public sealed class MovieConfiguration
     : IEntityTypeConfiguration<MovieEntity>

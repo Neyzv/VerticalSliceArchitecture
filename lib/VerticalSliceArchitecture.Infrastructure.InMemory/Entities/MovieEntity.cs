@@ -1,4 +1,4 @@
-﻿namespace VerticalSliceArchitecture.Infrastructure.Persistence.InMemory.Entities;
+﻿namespace VerticalSliceArchitecture.Infrastructure.InMemory.Entities;
 
 public sealed class MovieEntity
 {

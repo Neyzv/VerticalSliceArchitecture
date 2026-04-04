@@ -1,9 +1,9 @@
 ﻿using Bogus;
 using Microsoft.EntityFrameworkCore;
-using VerticalSliceArchitecture.Infrastructure.Persistence.InMemory.Entities;
+using VerticalSliceArchitecture.Infrastructure.InMemory.Entities;
 using VerticalSliceArchitecture.Infrastructure.Persistence.Seeding;
 
-namespace VerticalSliceArchitecture.Infrastructure.Persistence.InMemory.Seeding;
+namespace VerticalSliceArchitecture.Infrastructure.InMemory.Seeding;
 
 public sealed class MovieSeeder
     : ISeeder<InMemoryDbContext>
@@ -11,7 +11,7 @@ public sealed class MovieSeeder
     private const byte MinMovieCount = 6;
     private const byte MaxMovieCount = 15;
     
-    private IEnumerable<MovieEntity> GetMovies(byte amount)
+    private static IEnumerable<MovieEntity> GetMovies(byte amount)
     {
         var faker = new Faker<MovieEntity>()
             .RuleFor(static m => m.Id, faker => faker.Random.Guid())

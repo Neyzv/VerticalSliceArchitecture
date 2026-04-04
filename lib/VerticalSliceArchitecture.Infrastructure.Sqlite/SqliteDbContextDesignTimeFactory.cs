@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace VerticalSliceArchitecture.Infrastructure.Persistence.Sqlite;
+namespace VerticalSliceArchitecture.Infrastructure.Sqlite;
 
 /// <summary>
 /// Class that provides an instance of the <see cref="SqliteDbContext"/> to execute EF Core commands.

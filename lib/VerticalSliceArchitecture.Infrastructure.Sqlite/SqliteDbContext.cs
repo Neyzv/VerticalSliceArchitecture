@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using VerticalSliceArchitecture.Infrastructure.Persistence.Seeding;
-using VerticalSliceArchitecture.Infrastructure.Persistence.Sqlite.Entities;
+using VerticalSliceArchitecture.Infrastructure.Sqlite.Entities;
 
-namespace VerticalSliceArchitecture.Infrastructure.Persistence.Sqlite;
+namespace VerticalSliceArchitecture.Infrastructure.Sqlite;
 
 public sealed class SqliteDbContext(DbContextOptions<SqliteDbContext> options, IEnumerable<ISeeder<SqliteDbContext>> seeders)
     : DbContext(options)

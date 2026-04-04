@@ -1,6 +1,6 @@
 ﻿using Facet;
 using Facet.Mapping;
-using VerticalSliceArchitecture.Infrastructure.Persistence.InMemory.Entities;
+using VerticalSliceArchitecture.Infrastructure.InMemory.Entities;
 
 namespace VerticalSliceArchitecture.Api.Models.Movies;
 

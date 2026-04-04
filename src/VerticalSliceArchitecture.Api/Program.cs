@@ -1,9 +1,8 @@
 using System.Runtime.InteropServices.ComTypes;
 using DorApiExplorer.Extensions;
 using Microsoft.EntityFrameworkCore;
-using VerticalSliceArchitecture.Infrastructure.Extensions;
-using VerticalSliceArchitecture.Infrastructure.Persistence.InMemory;
-using VerticalSliceArchitecture.Infrastructure.Persistence.InMemory.Repositories;
+using VerticalSliceArchitecture.Infrastructure.InMemory.Extensions;
+using VerticalSliceArchitecture.Infrastructure.Sqlite.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +13,9 @@ builder.Services
     .AddInMemoryDatabase(static (_, o) => o.UseInMemoryDatabase("movies"))
     .AddSqliteDatabase(static (_, o) => o.UseSqlite("Data Source=app.db"))
     .AddMediaThor()
-    .AddDorApiExplorer();
+    .AddDorApiExplorer()
+    .AddSwaggerGen()
+    .AddEndpointsApiExplorer();
 
 var app = builder.Build();
 
@@ -38,6 +39,9 @@ using (var scope = app.Services.CreateScope())
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

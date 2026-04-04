@@ -1,6 +1,6 @@
-﻿using VerticalSliceArchitecture.Infrastructure.Persistence.InMemory.Entities;
+﻿using VerticalSliceArchitecture.Infrastructure.InMemory.Entities;
 
-namespace VerticalSliceArchitecture.Infrastructure.Persistence.InMemory.Repositories;
+namespace VerticalSliceArchitecture.Infrastructure.InMemory.Repositories;
 
 public interface IMovieRepository
 {

@@ -1,6 +1,6 @@
 ﻿using VerticalSliceArchitecture.Domain.Enums;
 
-namespace VerticalSliceArchitecture.Infrastructure.Persistence.Sqlite.Entities;
+namespace VerticalSliceArchitecture.Infrastructure.Sqlite.Entities;
 
 public sealed class VideoGameEntity
 {

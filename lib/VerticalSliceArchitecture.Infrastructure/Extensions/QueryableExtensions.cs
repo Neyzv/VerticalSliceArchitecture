@@ -3,12 +3,12 @@ using VerticalSliceArchitecture.Infrastructure.DesignPattern.Specification;
 
 namespace VerticalSliceArchitecture.Infrastructure.Extensions;
 
-internal static class QueryableExtensions
+public static class QueryableExtensions
 {
     extension<TEntity>(IQueryable<TEntity> baseQuery)
         where TEntity : class
     {
-        internal IQueryable<TEntity> GetQuery(params IEnumerable<ISpecification<TEntity>> specifications)
+        public IQueryable<TEntity> GetQuery(params IEnumerable<ISpecification<TEntity>> specifications)
         {
             var query = baseQuery;
 

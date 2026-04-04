@@ -14,9 +14,12 @@
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.1"/>
         <PackageReference Include="Saturna.DorApiExplorer" Version="1.0.0" />
         <PackageReference Include="Saturna.MediaThor" Version="1.3.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.7" />
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\lib\VerticalSliceArchitecture.Infrastructure.InMemory\VerticalSliceArchitecture.Infrastructure.InMemory.csproj" />
+      <ProjectReference Include="..\..\lib\VerticalSliceArchitecture.Infrastructure.Sqlite\VerticalSliceArchitecture.Infrastructure.Sqlite.csproj" />
       <ProjectReference Include="..\..\lib\VerticalSliceArchitecture.Infrastructure\VerticalSliceArchitecture.Infrastructure.csproj" />
     </ItemGroup>
 

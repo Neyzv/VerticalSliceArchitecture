@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using VerticalSliceArchitecture.Domain.Enums;
 using VerticalSliceArchitecture.Infrastructure.Persistence.EntityFramework.ValueConverters;
-using VerticalSliceArchitecture.Infrastructure.Persistence.Sqlite.Entities;
+using VerticalSliceArchitecture.Infrastructure.Sqlite.Entities;
 
-namespace VerticalSliceArchitecture.Infrastructure.Persistence.Sqlite.Configurations;
+namespace VerticalSliceArchitecture.Infrastructure.Sqlite.Configurations;
 
 public sealed class VideoGameConfiguration
     : IEntityTypeConfiguration<VideoGameEntity>
@@ -21,7 +21,7 @@ public sealed class VideoGameConfiguration
             .IsRequired();
         builder
             .HasIndex(static v => v.Title)
-            .IsUnique();
+            .IsUnique(false);
 
         builder
             .Property(static v => v.Genre)

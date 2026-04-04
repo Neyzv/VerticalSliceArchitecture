@@ -1,8 +1,8 @@
 ﻿using System.Linq.Expressions;
 using VerticalSliceArchitecture.Infrastructure.DesignPattern.Specification;
-using VerticalSliceArchitecture.Infrastructure.Persistence.InMemory.Entities;
+using VerticalSliceArchitecture.Infrastructure.InMemory.Entities;
 
-namespace VerticalSliceArchitecture.Infrastructure.Persistence.InMemory.Repositories.Specifications.Ordering;
+namespace VerticalSliceArchitecture.Infrastructure.InMemory.Repositories.Specifications.Ordering;
 
 /// <summary>
 /// Ordering descending specification by <see cref="MovieEntity.ReleaseDate"/>.

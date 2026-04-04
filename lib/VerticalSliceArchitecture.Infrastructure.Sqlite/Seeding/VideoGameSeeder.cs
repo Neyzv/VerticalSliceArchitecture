@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using VerticalSliceArchitecture.Domain.Enums;
 using VerticalSliceArchitecture.Infrastructure.Persistence.Seeding;
-using VerticalSliceArchitecture.Infrastructure.Persistence.Sqlite.Entities;
+using VerticalSliceArchitecture.Infrastructure.Sqlite.Entities;
 
-namespace VerticalSliceArchitecture.Infrastructure.Persistence.Sqlite.Seeding;
+namespace VerticalSliceArchitecture.Infrastructure.Sqlite.Seeding;
 
 public sealed class VideoGameSeeder
     : ISeeder<SqliteDbContext>

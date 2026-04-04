@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VerticalSliceArchitecture.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VerticalSliceArchitecture.Infrastructure", "lib\VerticalSliceArchitecture.Infrastructure\VerticalSliceArchitecture.Infrastructure.csproj", "{E2BA1D91-86BE-4E8A-901C-CCCFE7C1FA80}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VerticalSliceArchitecture.Infrastructure.InMemory", "lib\VerticalSliceArchitecture.Infrastructure.InMemory\VerticalSliceArchitecture.Infrastructure.InMemory.csproj", "{4DCE22CE-DF18-465B-B9E5-A0304F1EDE74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VerticalSliceArchitecture.Infrastructure.Sqlite", "lib\VerticalSliceArchitecture.Infrastructure.Sqlite\VerticalSliceArchitecture.Infrastructure.Sqlite.csproj", "{0CD922FF-B8EE-4C09-9D4A-02DEA77A297F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +26,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{9764AFCF-9573-4C7E-A621-B2027A91A733} = {DF16A340-AECF-4ABE-8644-C7C81A5B0273}
 		{E2BA1D91-86BE-4E8A-901C-CCCFE7C1FA80} = {C0EEF900-6A23-41F7-9EC7-D92A44155D26}
+		{4DCE22CE-DF18-465B-B9E5-A0304F1EDE74} = {C0EEF900-6A23-41F7-9EC7-D92A44155D26}
+		{0CD922FF-B8EE-4C09-9D4A-02DEA77A297F} = {C0EEF900-6A23-41F7-9EC7-D92A44155D26}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9764AFCF-9573-4C7E-A621-B2027A91A733}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -32,5 +38,13 @@ Global
 		{E2BA1D91-86BE-4E8A-901C-CCCFE7C1FA80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2BA1D91-86BE-4E8A-901C-CCCFE7C1FA80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2BA1D91-86BE-4E8A-901C-CCCFE7C1FA80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DCE22CE-DF18-465B-B9E5-A0304F1EDE74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DCE22CE-DF18-465B-B9E5-A0304F1EDE74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DCE22CE-DF18-465B-B9E5-A0304F1EDE74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DCE22CE-DF18-465B-B9E5-A0304F1EDE74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CD922FF-B8EE-4C09-9D4A-02DEA77A297F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CD922FF-B8EE-4C09-9D4A-02DEA77A297F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CD922FF-B8EE-4C09-9D4A-02DEA77A297F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CD922FF-B8EE-4C09-9D4A-02DEA77A297F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

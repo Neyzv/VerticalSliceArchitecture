@@ -3,9 +3,8 @@ using DorApiExplorer;
 using Facet.Extensions;
 using MediaThor;
 using VerticalSliceArchitecture.Api.Models.Movies;
-using VerticalSliceArchitecture.Infrastructure.Persistence.InMemory.Entities;
-using VerticalSliceArchitecture.Infrastructure.Persistence.InMemory.Repositories;
-
+using VerticalSliceArchitecture.Infrastructure.InMemory.Entities;
+using VerticalSliceArchitecture.Infrastructure.InMemory.Repositories;
 namespace VerticalSliceArchitecture.Api.Features.Movies;
 
 public static class GetMoviesFeature

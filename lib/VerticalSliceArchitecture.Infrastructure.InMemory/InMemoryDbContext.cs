@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using VerticalSliceArchitecture.Infrastructure.Persistence.InMemory.Entities;
+using VerticalSliceArchitecture.Infrastructure.InMemory.Entities;
 using VerticalSliceArchitecture.Infrastructure.Persistence.Seeding;
 
-namespace VerticalSliceArchitecture.Infrastructure.Persistence.InMemory;
+namespace VerticalSliceArchitecture.Infrastructure.InMemory;
 
 public sealed class InMemoryDbContext(DbContextOptions<InMemoryDbContext> options, IEnumerable<ISeeder<InMemoryDbContext>> seeders)
     : DbContext(options)
