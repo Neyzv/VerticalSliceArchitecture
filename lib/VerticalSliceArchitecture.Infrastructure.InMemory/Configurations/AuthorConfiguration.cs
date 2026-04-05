@@ -14,6 +14,7 @@ public sealed class AuthorConfiguration
         builder.HasKey(static x => x.Id);
 
         builder.Property(static x => x.Name)
+            .HasMaxLength(80)
             .IsRequired();
         builder.HasIndex(static x => x.Name)
             .IsUnique(false);
