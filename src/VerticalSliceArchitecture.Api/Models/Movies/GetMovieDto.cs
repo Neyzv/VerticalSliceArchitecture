@@ -4,6 +4,9 @@ using VerticalSliceArchitecture.Infrastructure.InMemory.Entities;
 
 namespace VerticalSliceArchitecture.Api.Models.Movies;
 
+/// <summary>
+/// The DTO for the <see cref="MovieEntity"/>.
+/// </summary>
 [Facet(typeof(MovieEntity), Configuration = typeof(GetMovieDtoConfiguration), Include = [nameof(MovieEntity.Title), nameof(MovieEntity.Description)])]
 public sealed partial record GetMovieDto
 {
@@ -12,6 +15,9 @@ public sealed partial record GetMovieDto
     public string Author { get; set; } = null!;
 }
 
+/// <summary>
+/// The configuration for the <see cref="GetMovieDto"/>.
+/// </summary>
 public sealed class GetMovieDtoConfiguration
     : IFacetMapConfiguration<MovieEntity, GetMovieDto>
 {

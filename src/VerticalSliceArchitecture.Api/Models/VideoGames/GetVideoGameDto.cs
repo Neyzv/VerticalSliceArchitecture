@@ -6,12 +6,18 @@ using VerticalSliceArchitecture.Infrastructure.Sqlite.Entities;
 
 namespace VerticalSliceArchitecture.Api.Models.VideoGames;
 
+/// <summary>
+/// The DTO for the <see cref="GetVideoGameDto"/>.
+/// </summary>
 [Facet(typeof(VideoGameEntity), Configuration = typeof(GetVideoGameDtoConfiguration), Include = [nameof(MovieEntity.Title), nameof(MovieEntity.Description)])]
 public sealed partial record GetVideoGameDto
 {
     public string Genre { get; set; } = null!;
 }
 
+/// <summary>
+/// The configuration for the <see cref="GetVideoGameDtoConfiguration"/>.
+/// </summary>
 public sealed partial class GetVideoGameDtoConfiguration
     : IFacetMapConfiguration<VideoGameEntity, GetVideoGameDto>
 {

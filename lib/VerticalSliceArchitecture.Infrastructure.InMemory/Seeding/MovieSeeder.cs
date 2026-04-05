@@ -5,7 +5,7 @@ using VerticalSliceArchitecture.Infrastructure.Persistence.Seeding;
 
 namespace VerticalSliceArchitecture.Infrastructure.InMemory.Seeding;
 
-public sealed class MovieSeeder
+internal sealed class MovieSeeder
     : ISeeder<InMemoryDbContext>
 {
     private const byte MinMovieCount = 6;

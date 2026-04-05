@@ -8,7 +8,7 @@ using VerticalSliceArchitecture.Infrastructure.InMemory.Repositories.Specificati
 
 namespace VerticalSliceArchitecture.Infrastructure.InMemory.Repositories;
 
-public sealed class MovieRepository(IDbContextFactory<InMemoryDbContext> dbContextFactory)
+internal sealed class MovieRepository(IDbContextFactory<InMemoryDbContext> dbContextFactory)
     : IMovieRepository
 {
     public async IAsyncEnumerable<MovieEntity> GetAllMoviesOrderedByReleaseDateDescendingAsync(

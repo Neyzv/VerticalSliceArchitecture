@@ -10,9 +10,19 @@ namespace VerticalSliceArchitecture.Api.Features.Movies;
 
 public static class CreateMovieFeature
 {
+    /// <summary>
+    /// Request to create a movie.
+    /// </summary>
+    /// <param name="Title">The title of the movie.</param>
+    /// <param name="Description">The description of the movie.</param>
+    /// <param name="ReleaseDate">The release date of the movie.</param>
     public sealed record CreateMovieRequest(string Title, string Description, DateTime ReleaseDate)
         : IRequest<GetMovieDto>;
     
+    /// <summary>
+    /// The handler of the <see cref="CreateMovieRequest"/>.
+    /// </summary>
+    /// <param name="movieRepository">The movie repository.</param>
     public sealed class CreateMovieRequestHandler(IMovieRepository movieRepository)
         : IRequestHandler<CreateMovieRequest, GetMovieDto>
     {
@@ -32,6 +42,9 @@ public static class CreateMovieFeature
         }
     }
 
+    /// <summary>
+    /// The auto registered endpoint for the create movie feature.
+    /// </summary>
     public sealed class CreateMovieEndpoint
         : IEndpoint
     {

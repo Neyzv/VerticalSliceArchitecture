@@ -4,7 +4,7 @@ using VerticalSliceArchitecture.Infrastructure.InMemory.Entities;
 
 namespace VerticalSliceArchitecture.Infrastructure.InMemory.Configurations;
 
-public sealed class AuthorConfiguration
+internal sealed class AuthorConfiguration
     : IEntityTypeConfiguration<AuthorEntity>
 {
     public void Configure(EntityTypeBuilder<AuthorEntity> builder)

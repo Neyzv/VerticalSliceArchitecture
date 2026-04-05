@@ -10,9 +10,16 @@ namespace VerticalSliceArchitecture.Api.Features.VideoGames;
 
 public static class GetVideoGamesFeature
 {
+    /// <summary>
+    /// The query to get all video games.
+    /// </summary>
     public sealed record GetVideoGamesQuery
         : IStreamRequest<GetVideoGameDto>;
     
+    /// <summary>
+    /// The handler to get all video games.
+    /// </summary>
+    /// <param name="videoGameRepository">The video game repository.</param>
     public sealed class GetVideoGamesQueryHandler(IVideoGameRepository videoGameRepository)
         : IStreamRequestHandler<GetVideoGamesQuery, GetVideoGameDto>
     {
@@ -29,7 +36,10 @@ public static class GetVideoGamesFeature
         }
     }
     
-    public sealed class GetVideoGameEndpoint
+    /// <summary>
+    /// The auto registered endpoint for the get video games feature.
+    /// </summary>
+    public sealed class GetVideoGamesEndpoint
         : IEndpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app)

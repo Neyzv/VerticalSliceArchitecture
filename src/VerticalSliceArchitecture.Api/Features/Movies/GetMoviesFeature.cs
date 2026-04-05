@@ -9,9 +9,16 @@ namespace VerticalSliceArchitecture.Api.Features.Movies;
 
 public static class GetMoviesFeature
 {
+    /// <summary>
+    /// The query to get all movies
+    /// </summary>
     public sealed record GetMoviesQuery
         : IStreamRequest<GetMovieDto>;
 
+    /// <summary>
+    /// The handler to get all movies.
+    /// </summary>
+    /// <param name="movieRepository">The movie repository.</param>
     public sealed class GetMoviesHandler(IMovieRepository movieRepository)
         : IStreamRequestHandler<GetMoviesQuery, GetMovieDto>
     {
@@ -29,6 +36,9 @@ public static class GetMoviesFeature
         }
     }
 
+    /// <summary>
+    /// The auto registered endpoint for get movies feature.
+    /// </summary>
     public sealed class GetMoviesEndpoint
         : IEndpoint
     {

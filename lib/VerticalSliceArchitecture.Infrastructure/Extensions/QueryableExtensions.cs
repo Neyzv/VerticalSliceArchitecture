@@ -8,6 +8,11 @@ public static class QueryableExtensions
     extension<TEntity>(IQueryable<TEntity> baseQuery)
         where TEntity : class
     {
+        /// <summary>
+        /// Build the query with the provided specification for the specified <see cref="TEntity"/>.
+        /// </summary>
+        /// <param name="specifications">The collection of specifications to handle.</param>
+        /// <returns>An <see cref="IQueryable"/> of the current <see cref="TEntity"/>.</returns>
         public IQueryable<TEntity> GetQuery(params IEnumerable<ISpecification<TEntity>> specifications)
         {
             var query = baseQuery;

@@ -6,7 +6,7 @@ namespace VerticalSliceArchitecture.Infrastructure.Sqlite;
 /// <summary>
 /// Class that provides an instance of the <see cref="SqliteDbContext"/> to execute EF Core commands.
 /// </summary>
-public sealed class SqliteDbContextDesignTimeFactory
+internal sealed class SqliteDbContextDesignTimeFactory
     : IDesignTimeDbContextFactory<SqliteDbContext>
 {
     public SqliteDbContext CreateDbContext(string[] args)

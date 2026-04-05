@@ -4,7 +4,7 @@ using VerticalSliceArchitecture.Infrastructure.InMemory.Entities;
 
 namespace VerticalSliceArchitecture.Infrastructure.InMemory.Configurations;
 
-public sealed class MovieConfiguration
+internal sealed class MovieConfiguration
     : IEntityTypeConfiguration<MovieEntity>
 {
     public void Configure(EntityTypeBuilder<MovieEntity> builder)

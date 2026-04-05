@@ -6,7 +6,7 @@ using VerticalSliceArchitecture.Infrastructure.Sqlite.Entities;
 
 namespace VerticalSliceArchitecture.Infrastructure.Sqlite.Configurations;
 
-public sealed class VideoGameConfiguration
+internal sealed class VideoGameConfiguration
     : IEntityTypeConfiguration<VideoGameEntity>
 {
     public void Configure(EntityTypeBuilder<VideoGameEntity> builder)

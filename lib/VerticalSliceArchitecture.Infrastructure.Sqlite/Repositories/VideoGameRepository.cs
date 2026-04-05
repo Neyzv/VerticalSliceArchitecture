@@ -6,7 +6,7 @@ using VerticalSliceArchitecture.Infrastructure.Sqlite.Repositories.Specification
 
 namespace VerticalSliceArchitecture.Infrastructure.Sqlite.Repositories;
 
-public sealed class VideoGameRepository(IDbContextFactory<SqliteDbContext> dbContextFactory)
+internal sealed class VideoGameRepository(IDbContextFactory<SqliteDbContext> dbContextFactory)
     : IVideoGameRepository
 {
     public async IAsyncEnumerable<VideoGameEntity> GetAllVideoGamesOrderedByReleaseDateAscendingAsync([EnumeratorCancellation] CancellationToken cancellationToken = default)

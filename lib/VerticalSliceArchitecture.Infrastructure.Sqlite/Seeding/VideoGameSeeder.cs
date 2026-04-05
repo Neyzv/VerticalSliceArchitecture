@@ -6,7 +6,7 @@ using VerticalSliceArchitecture.Infrastructure.Sqlite.Entities;
 
 namespace VerticalSliceArchitecture.Infrastructure.Sqlite.Seeding;
 
-public sealed class VideoGameSeeder
+internal sealed class VideoGameSeeder
     : ISeeder<SqliteDbContext>
 {
     private const byte MinVideoGamesCount = 6;
