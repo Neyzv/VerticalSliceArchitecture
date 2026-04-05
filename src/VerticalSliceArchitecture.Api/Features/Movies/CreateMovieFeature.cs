@@ -20,6 +20,7 @@ public static class CreateMovieFeature
         {
             var movieEntity = new MovieEntity
             {
+                Id = Guid.NewGuid(),
                 Title = request.Title,
                 Description = request.Description,
                 ReleaseDate = DateOnly.FromDateTime(request.ReleaseDate)

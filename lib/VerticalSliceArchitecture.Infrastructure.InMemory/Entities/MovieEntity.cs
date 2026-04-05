@@ -9,4 +9,8 @@ public sealed class MovieEntity
     public required string Description { get; set; }
     
     public required DateOnly ReleaseDate { get; set; }
+    
+    public Guid AuthorId { get; set; }
+    
+    public AuthorEntity Author { get; set; } = null!;
 }

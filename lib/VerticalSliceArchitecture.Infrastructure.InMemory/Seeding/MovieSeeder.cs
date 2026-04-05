@@ -13,13 +13,20 @@ public sealed class MovieSeeder
     
     private static IEnumerable<MovieEntity> GetMovies(byte amount)
     {
-        var faker = new Faker<MovieEntity>()
-            .RuleFor(static m => m.Id, faker => faker.Random.Guid())
-            .RuleFor(static m => m.Title, faker => faker.Lorem.Sentence(Random.Shared.Next(1, 3)))
-            .RuleFor(static m => m.Description, faker =>  faker.Lorem.Sentence(Random.Shared.Next(4, 15)))
-            .RuleFor(static m => m.ReleaseDate, faker => DateOnly.FromDateTime(faker.Date.Past(Random.Shared.Next(0, 40))));
+        var authorFaker = new Faker<AuthorEntity>()
+            .RuleFor(a => a.Id, faker => faker.Random.Guid())
+            .RuleFor(a => a.Name,  faker => faker.Lorem.Sentence(Random.Shared.Next(1, 3)));
+
+        var authors = authorFaker.Generate(amount / 3);
         
-        return faker.GenerateLazy(amount);
+        var movieFaker = new Faker<MovieEntity>()
+            .RuleFor(m => m.Id, faker => faker.Random.Guid())
+            .RuleFor(m => m.Title, faker => faker.Lorem.Sentence(Random.Shared.Next(1, 5)))
+            .RuleFor(m => m.Description, faker => faker.Lorem.Sentence(Random.Shared.Next(4, 15)))
+            .RuleFor(m => m.ReleaseDate, faker => DateOnly.FromDateTime(faker.Date.Past(Random.Shared.Next(0, 40))))
+            .RuleFor(m => m.Author, _ => authors.ElementAt(Random.Shared.Next(0, authors.Count)));
+        
+        return movieFaker.GenerateLazy(amount);
     }
     
     public bool ShouldBeApplied(InMemoryDbContext context) =>

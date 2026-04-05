@@ -30,5 +30,13 @@ public sealed class MovieConfiguration
             .Property(static m => m.ReleaseDate)
             .HasColumnType("date")
             .IsRequired();
+        
+        builder.Property(static m => m.AuthorId)
+            .IsRequired();
+        
+        builder.HasOne(static m => m.Author)
+            .WithMany()
+            .HasForeignKey(static m => m.AuthorId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

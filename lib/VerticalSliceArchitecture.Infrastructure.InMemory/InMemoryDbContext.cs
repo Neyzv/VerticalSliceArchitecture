@@ -9,6 +9,8 @@ public sealed class InMemoryDbContext(DbContextOptions<InMemoryDbContext> option
 {
     public DbSet<MovieEntity> Movies { get; set; }
     
+    public DbSet<AuthorEntity> Authors { get; set; }
+    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(InMemoryDbContext).Assembly);

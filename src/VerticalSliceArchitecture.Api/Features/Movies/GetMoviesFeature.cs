@@ -22,7 +22,7 @@ public static class GetMoviesFeature
             cancellationToken.ThrowIfCancellationRequested();
 
             await foreach (var movie in movieRepository
-                               .GetAllMoviesOrderedByReleaseDateDescendingAsync(cancellationToken))
+                               .GetAllMoviesOrderedByReleaseDateDescendingAsync(true, cancellationToken))
             {
                 yield return movie.ToFacet<MovieEntity, GetMovieDto>();
             }

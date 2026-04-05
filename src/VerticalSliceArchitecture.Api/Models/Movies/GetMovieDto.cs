@@ -8,6 +8,8 @@ namespace VerticalSliceArchitecture.Api.Models.Movies;
 public sealed partial record GetMovieDto
 {
     public int YearOfRelease { get; set; }
+
+    public string Author { get; set; } = null!;
 }
 
 public sealed class GetMovieDtoConfiguration
@@ -16,5 +18,6 @@ public sealed class GetMovieDtoConfiguration
     public static void Map(MovieEntity source, GetMovieDto target)
     {
         target.YearOfRelease = source.ReleaseDate.Year;
+        target.Author = source.Author.Name;
     }
 }

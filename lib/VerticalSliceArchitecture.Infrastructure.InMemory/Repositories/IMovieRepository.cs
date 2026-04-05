@@ -7,9 +7,10 @@ public interface IMovieRepository
     /// <summary>
     /// Get all movies ordered by most recent release date.
     /// </summary>
+    /// <param name="includes">A boolean indicating if we should load includes.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>An async enumeration of <see cref="MovieEntity"/>.</returns>
-    IAsyncEnumerable<MovieEntity> GetAllMoviesOrderedByReleaseDateDescendingAsync(CancellationToken cancellationToken = default);
+    IAsyncEnumerable<MovieEntity> GetAllMoviesOrderedByReleaseDateDescendingAsync(bool includes = false, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Create a new movie entity in the database.
